@@ -40,7 +40,9 @@ At the same instance these symptoms entered by the patient will be displayed at 
 
 2. we have also planned to develop a data mining model wherein the treatment will be compared with worldwide doctors to showcase the authenticity and validity of treatment in percentage and the same comparison graph will be displayed at patient portal it will make the patient feel satisfied with the treatment.
 
-3. it is planned to integrate this portal with online payment apps {GPAY, Paytm, etc...}
+3. it is planned to integrate this portal with online payment apps {GPAY, Paytm, etc..}
+
+4. integration of payments through crytocurrency.
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
