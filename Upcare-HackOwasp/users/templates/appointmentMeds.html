@@ -45,7 +45,7 @@
 												<th>
 													Meeting link: {{appointment.meeting_link}} <a href="{% url 'videocall' appointment.id %}"><button>Join</button></a>
 												</th>
-												<th>Diseases hint (ML MODEL) : {{disease}}</th>
+												<th>Diseases hint (ML MODEL) : <a href="{{url}}">{{disease}}</a> (click to know more)</th>
 												
 											</tbody>
 										</table>

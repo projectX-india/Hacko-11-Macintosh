@@ -22,6 +22,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
+import bs4
 
 
 def signupUser(request):
@@ -240,6 +241,7 @@ def appointmentMedsdoc(request, pk):
         if symp.name in symp_list:
             test_case.loc[0, [symp.name]] = 1
     disease = cls.predict(test_case)
+    url = syslink(disease)
     # print(disease[0])
 
     if request.method == 'POST':
@@ -256,9 +258,17 @@ def appointmentMedsdoc(request, pk):
         'form': form,
         'disease': disease[0],
         'pk': pk,
+        'url':url,
     }
     return render(request, 'doctor/appointmentMeds.html', context)
 
+def syslink(disease):
+    res =  requests.get('https://google.com/search?q='+''.join(disease))
+    soup = bs4.BeautifulSoup(res.text, "html.parser")
+    linkElements = soup.select('div#main > div > div > div > a')
+    linkToOpen = min(1, len(linkElements))
+    #print(linkElements[0].get('href'))
+    return 'http://google.com'+linkElements[0].get('href')
 
 def appointmentMeds(request, pk):
     appointment = Appointment.objects.get(id=pk)
@@ -277,6 +287,7 @@ def appointmentMeds(request, pk):
         if symp.name in symp_list:
             test_case.loc[0, [symp.name]] = 1
     disease = cls.predict(test_case)
+    url = syslink(disease)
     # print(disease[0])
 
     if request.method == 'POST':
@@ -292,6 +303,7 @@ def appointmentMeds(request, pk):
         'symptoms': appointmentSymptoms,
         'form': form,
         'disease': disease[0],
+        'url':url,
     }
     return render(request, 'appointmentMeds.html', context)
 
