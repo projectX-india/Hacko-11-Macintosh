@@ -1506,4 +1506,4 @@ def videocall(request, meetingid):
         return redirect('loginUser')
 
     return render(request, 'index.html', {
-        'agora_id': '211afdfa7ce3483ab760444a2b23ec91', 'channel': meetingid, 'channel_end_url': '/success/', 'title': 'upcare'})
+        'agora_id': '211afdfa7ce3483ab760444a2b23ec91', 'channel': meetingid, 'channel_end_url': '/', 'title': 'upcare'})
